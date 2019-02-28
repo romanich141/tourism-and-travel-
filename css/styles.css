@@ -12,13 +12,21 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Open Sans', sans-serif;
+  overflow: hidden;
 }
 
 p {
   margin: 0;
 }
 
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
 .container {
+  position: relative;
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -32,8 +40,9 @@ p {
       -ms-flex-align: center;
           align-items: center;
   max-width: 1200px;
-  padding: 5px 10px;
+  padding: 5px 20px;
   margin: 0 auto;
+  z-index: 999;
 }
 
 header {
@@ -47,30 +56,159 @@ header .label {
 header .label span {
   color: #189ade;
 }
-header .navbar {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+@media screen and (max-width: 992px) {
+  header .label {
+    font-size: 32px;
+  }
+}
+@media screen and (max-width: 768px) {
+  header .label {
+    font-size: 28px;
+  }
 }
 header .navbar-item {
   display: inline-block;
 }
 header .navbar a {
+  position: relative;
   padding: 5px 10px;
   text-decoration: none;
   color: #919191;
   border: 1px solid rgba(0, 0, 0, 0);
-  -webkit-transition: all .2s;
-  transition: all .2s;
+  -webkit-transition: all .15s;
+  transition: all .15s;
   font-size: 16px;
 }
-header .navbar a:hover {
+header .navbar a:before {
+  content: '';
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1;
   color: white;
   background-color: #0099ed;
   border-radius: 5px;
   border-color: #1784d1;
-  -webkit-box-shadow: 0 .5px 1px 1px inset #88d3fb;
-          box-shadow: 0 .5px 1px 1px inset #88d3fb;
+  -webkit-box-shadow: 0 .5px .5px 1px inset #88d3fb;
+          box-shadow: 0 .5px .5px 1px inset #88d3fb;
+  -webkit-transform: rotateX(90deg);
+          transform: rotateX(90deg);
+  -webkit-transition: all .2s;
+  transition: all .2s;
+}
+header .navbar a:hover {
+  color: #fff;
+}
+header .navbar a:hover:before {
+  -webkit-transform: rotateX(0deg);
+          transform: rotateX(0deg);
+}
+@media screen and (max-width: 1200px) {
+  header .navbar a {
+    font-size: 15px;
+  }
+}
+@media screen and (max-width: 992px) {
+  header .navbar a {
+    font-size: 14px;
+  }
+}
+@media screen and (max-width: 768px) {
+  header .navbar {
+    display: none;
+  }
+}
+header .icon-burger {
+  display: none;
+  margin-right: 40px;
+  color: #919191;
+  -webkit-transition: all .3s;
+  transition: all .3s;
+}
+header .icon-burger i {
+  padding: 5px;
+  font-size: 25px;
+}
+header .icon-burger:hover {
+  color: #0099ed;
+  -webkit-transform: rotateZ(-90deg);
+          transform: rotateZ(-90deg);
+}
+@media screen and (max-width: 768px) {
+  header .icon-burger {
+    display: block;
+  }
+}
+header .mobile-navbar {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background-color: rgba(0, 153, 237, 0.3);
+  -webkit-transition: all .3s;
+  transition: all .3s;
+  -webkit-transform: scaleY(0);
+          transform: scaleY(0);
+  -webkit-transform-origin: top;
+          transform-origin: top;
+}
+header .mobile-navbar ul {
+  width: 100%;
+}
+header .mobile-navbar-item {
+  text-align: center;
+  margin: 5px 0;
+}
+header .mobile-navbar-item a {
+  position: relative;
+  display: block;
+  text-decoration: none;
+  color: #fff;
+  font-size: 20px;
+  padding: 10px 50px;
+}
+header .mobile-navbar-item a:before {
+  content: '';
+  position: absolute;
+  height: 0%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  color: white;
+  background-color: rgba(0, 153, 237, 0);
+  border-radius: 5px;
+  border-color: #1784d1;
+  -webkit-box-shadow: 0 .5px .5px 1px inset #88d3fb;
+          box-shadow: 0 .5px .5px 1px inset #88d3fb;
+  -webkit-transition: all .2s;
+  transition: all .2s;
+}
+header .mobile-navbar-item a:hover {
+  color: #fff;
+}
+header .mobile-navbar-item a:hover:before {
+  height: 100%;
+  background-color: #0099ed;
+}
+header .toggle-mobile-navbar {
+  -webkit-transform: scaleY(1);
+          transform: scaleY(1);
 }
 
 /*# sourceMappingURL=styles.css.map */
